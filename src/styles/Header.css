@@ -1,0 +1,116 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+span.diamond {
+  border: 1px solid white;
+  position: relative;
+  width: 5.5rem;
+  height: 5.5rem;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+span.diamond > img {
+  width: 70%;
+  height: 70%;
+}
+
+span#varticle-line {
+  background-color: white;
+  height: calc(3.5rem + 1px);
+  width: 1px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+}
+
+div.content {
+  width: 50%;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  margin: calc(3.5rem + 1px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+div.content > p {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  line-height: 2.5;
+}
+
+div.content > h2 {
+  color: white;
+  font-size: 2.25rem;
+  font-weight: 600px;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
+
+div.nav-buttons {
+  display: flex;
+  border: 0.5px solid white;
+  border-radius: 5px;
+}
+
+div.nav-buttons > button {
+  background-color: transparent;
+  display: block;
+  min-width: 8rem;
+  height: 3rem;
+  line-height: 2.75rem;
+  padding: 0 1.25rem 0 1.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1rem;
+  border: none;
+  font-family: Source Sans Pro, sans-serif;
+  color: white;
+  border-right: 1px solid white;
+  cursor: pointer;
+}
+
+span#verticle-line-bottom {
+  background-color: white;
+  height: calc(3.5rem + 1px);
+  width: 1px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+}
+
+div.nav-buttons > button:hover {
+  transition: 0.25s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.096);
+}
+
+a.hover-link {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-bottom-color 0.2s ease-in-out;
+  padding: 0px 10px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px dotted hsla(0, 0%, 100%, 0.5);
+}
+
+a.hover-link:hover {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-bottom-color 0.2s ease-in-out;
+  border-bottom: 1px dotted hsla(0, 0%, 100%, 0);
+}

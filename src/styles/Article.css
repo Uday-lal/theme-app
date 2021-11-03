@@ -1,0 +1,45 @@
+div.article {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.513);
+  width: 40rem;
+}
+
+div.article > div.article-content {
+  padding: 10px;
+}
+
+div.a-content {
+  width: 100%;
+  color: white;
+}
+
+div.a-content > img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+div.close-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+h2.major {
+  color: white;
+  text-transform: uppercase;
+  border-bottom: 2px solid white;
+}
+
+div.close-icon:hover {
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.109);
+  border-radius: 50%;
+  cursor: pointer;
+}
