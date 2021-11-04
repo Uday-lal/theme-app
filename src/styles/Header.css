@@ -71,6 +71,7 @@ div.nav-buttons {
 
 div.nav-buttons > button {
   background-color: transparent;
+  transition: 0.25s ease-in-out;
   display: block;
   min-width: 8rem;
   height: 3rem;

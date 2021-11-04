@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import NavBar from "./components/Navbar";
 import Header from "./components/Header";
 import Article from "./components/Article";
@@ -15,8 +15,11 @@ function App() {
   const [backgroundAnimation, setBackgroundAnimation] = useState(false);
 
   const handleClick = (name: string) => {
-    console.log(name);
-    setBackgroundAnimation(true);
+    const bg = document.getElementById("bg-img");
+    if (bg) {
+      bg.id = "bg-img-open";
+      setBackgroundAnimation(true);
+    }
   };
 
   return (
@@ -24,16 +27,37 @@ function App() {
       <div className="App">
         <div id="visible-content">
           <NavBar />
-          <div className="header-section">
-            <Header />
-            <div className="nav-buttons">
-              {buttons.map((button: string) => (
-                <button key={button} onClick={() => handleClick(button)}>
-                  {button}
-                </button>
-              ))}
+          {backgroundAnimation ? (
+            <motion.div
+              transition={{ duration: 0.3 }}
+              animate={{
+                opacity: 0,
+                scale: 0.95,
+                transitionEnd: { display: "none" },
+              }}
+              className="header-section"
+            >
+              <Header />
+              <div className="nav-buttons">
+                {buttons.map((button: string) => (
+                  <button key={button} onClick={() => handleClick(button)}>
+                    {button}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          ) : (
+            <div className="header-section">
+              <Header />
+              <div className="nav-buttons">
+                {buttons.map((button: string) => (
+                  <button key={button} onClick={() => handleClick(button)}>
+                    {button}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
           <div className="footer-section">
             <footer>
               &#169; GATSBY STARTER - DIMENSION. DESIGN:
@@ -72,24 +96,13 @@ function App() {
             </p>
           </Article>
         </div>
-        {backgroundAnimation ? (
-          <motion.div
-            id="bg-img"
-            animate={{ scale: 0.8 }}
-            style={{
-              backgroundImage: `url("./assets/bg.jpg")`,
-              filter: "brightness(50%)",
-            }}
-          ></motion.div>
-        ) : (
-          <div
-            id="bg-img"
-            style={{
-              backgroundImage: `url("./assets/bg.jpg")`,
-              filter: "brightness(50%)",
-            }}
-          ></div>
-        )}
+        <div
+          id="bg-img"
+          style={{
+            backgroundImage: `url("./assets/bg.jpg")`,
+            filter: "brightness(50%)",
+          }}
+        ></div>
       </div>
     </React.Fragment>
   );
