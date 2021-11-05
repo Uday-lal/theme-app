@@ -1,11 +1,12 @@
 div.article {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.513);
-  width: 40rem;
+  background-color: rgba(27, 31, 34, 0.85);
+  width: 40%;
+  border-radius: 5px;
 }
 
 div.article > div.article-content {
-  padding: 10px;
+  padding: 40px;
 }
 
 div.a-content {
@@ -15,7 +16,14 @@ div.a-content {
 
 div.a-content > img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
+  margin: 0 0 2em;
+}
+
+div.a-content > p {
+  line-height: 1.7rem;
+  font-size: 1.2rem;
+  /* margin: 25px; */
 }
 
 div.close-icon {
@@ -35,6 +43,13 @@ h2.major {
   color: white;
   text-transform: uppercase;
   border-bottom: 2px solid white;
+  line-height: 1.4;
+  letter-spacing: 0.5rem;
+  width: max-content;
+  margin: 0 0 2em;
+  padding-bottom: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 div.close-icon:hover {

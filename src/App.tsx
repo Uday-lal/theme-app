@@ -1,24 +1,66 @@
 import React from "react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import NavBar from "./components/Navbar";
-import Header from "./components/Header";
 import Article from "./components/Article";
+import HeaderContent from "./components/HeaderContent";
 import "./styles/App.css";
 
 function App() {
-  const buttons = ["intro", "work", "about", "contact"];
-  const [introDisplay, setIntroDisplay] = useState("none");
-  const [workDisplay, setWorkDisplay] = useState("none");
-  const [aboutDislay, setAboutDisplay] = useState("none");
-  const [contactDisplay, setContactDisplay] = useState("none");
-  const [backgroundAnimation, setBackgroundAnimation] = useState(false);
+  const [backgroundAnimation, setbackgroundAnimation] = useState({});
+  const [footerAnimation, setFooterAnimation] = useState({});
+  const [articleAnimation, setArticleAnimation] = useState({});
+  const [currentArticle, setCurrentArticle] = useState("");
 
   const handleClick = (name: string) => {
     const bg = document.getElementById("bg-img");
-    if (bg) {
+    const articles = document.getElementById("articles");
+    const article = document.getElementById(name);
+    if (bg && articles && article) {
       bg.id = "bg-img-open";
-      setBackgroundAnimation(true);
+      articles.style.display = "flex";
+      setbackgroundAnimation({
+        opacity: 0,
+        scale: 0.95,
+        transitionEnd: { display: "none" },
+      });
+      setFooterAnimation({
+        opacity: 0,
+        scale: 0.95,
+        y: 8,
+        transitionEnd: { display: "none" },
+      });
+      article.style.display = "block";
+      setArticleAnimation({ opacity: 1, y: 0 });
+      setCurrentArticle(name);
+    }
+  };
+
+  const reset = () => {
+    const bg = document.getElementById("bg-img-open");
+    const articles = document.getElementById("articles");
+    const article = document.getElementById(currentArticle);
+    if (bg && articles && article) {
+      setArticleAnimation({
+        y: 30,
+        opacity: 0,
+      });
+      setTimeout(() => {
+        bg.id = "bg-img";
+        setbackgroundAnimation({
+          opacity: 1,
+          scale: 1,
+          transitionEnd: { display: "flex" },
+        });
+        setFooterAnimation({
+          opacity: 1,
+          scale: 1,
+          y: 1,
+          transitionEnd: { display: "block" },
+        });
+        articles.style.display = "none";
+        article.style.display = "none";
+      }, 500);
     }
   };
 
@@ -27,39 +69,18 @@ function App() {
       <div className="App">
         <div id="visible-content">
           <NavBar />
-          {backgroundAnimation ? (
-            <motion.div
-              transition={{ duration: 0.3 }}
-              animate={{
-                opacity: 0,
-                scale: 0.95,
-                transitionEnd: { display: "none" },
-              }}
-              className="header-section"
-            >
-              <Header />
-              <div className="nav-buttons">
-                {buttons.map((button: string) => (
-                  <button key={button} onClick={() => handleClick(button)}>
-                    {button}
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          ) : (
-            <div className="header-section">
-              <Header />
-              <div className="nav-buttons">
-                {buttons.map((button: string) => (
-                  <button key={button} onClick={() => handleClick(button)}>
-                    {button}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
+          <motion.div
+            transition={{ duration: 0.3 }}
+            animate={backgroundAnimation}
+            className="header-section"
+          >
+            <HeaderContent handleClick={handleClick} />
+          </motion.div>
           <div className="footer-section">
-            <footer>
+            <motion.footer
+              transition={{ duration: 0.3 }}
+              animate={footerAnimation}
+            >
               &#169; GATSBY STARTER - DIMENSION. DESIGN:
               <a href="#" className="hover-link">
                 HTML5 UP
@@ -68,11 +89,11 @@ function App() {
               <a href="#" className="hover-link">
                 GATSBY.JS
               </a>
-            </footer>
+            </motion.footer>
           </div>
         </div>
-        <div id="articles">
-          <Article title="intro" display={introDisplay}>
+        <div id="articles" style={{ display: "none" }}>
+          <Article title="intro" animate={articleAnimation} onClose={reset}>
             <img src="./assets/pic01.jpg" alt="overlay" />
             <p>
               Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
@@ -93,6 +114,36 @@ function App() {
               et netus et malesuada fames ac turpis egestas. In non lorem sit
               amet elit placerat maximus. Pellentesque aliquam maximus risus,
               vel sed vehicula.
+            </p>
+          </Article>
+          <Article title="work" animate={articleAnimation} onClose={reset}>
+            <img src="./assets/pic01.jpg" alt="overlay" />
+            <p>
+              Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu,
+              at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent
+              urna nisi, fringila lorem et vehicula lacinia quam. Integer
+              sollicitudin mauris nec lorem luctus ultrices.
+            </p>
+            <p>
+              Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
+              libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
+              Pellentesque condimentum sem. In efficitur ligula tate urna.
+              Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor.
+              Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
+              libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat
+              tempus.
+            </p>
+          </Article>
+          <Article title="about" animate={articleAnimation} onClose={reset}>
+            <img src="./assets/pic01.jpg" alt="overlay" />
+            <p>
+              Lorem ipsum dolor sit amet, consectetur et adipiscing elit.
+              Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac.
+              Aliquam erat volutpat. Praesent urna nisi, fringila lorem et
+              vehicula lacinia quam. Integer sollicitudin mauris nec lorem
+              luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum
+              primis in faucibus. Cras viverra ligula sit amet ex mollis mattis
+              lorem ipsum dolor sit amet.
             </p>
           </Article>
         </div>

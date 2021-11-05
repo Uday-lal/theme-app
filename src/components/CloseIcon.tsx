@@ -1,8 +1,12 @@
 import React from "react";
 
-function CloseIcon() {
+interface CloseIconProps {
+  onClick: () => void;
+}
+
+function CloseIcon(props: CloseIconProps) {
   return (
-    <div className="close-icon">
+    <div className="close-icon" onClick={props.onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"

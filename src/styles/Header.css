@@ -105,6 +105,7 @@ a.hover-link {
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
     border-bottom-color 0.2s ease-in-out;
   padding: 0px 10px;
+  width: max-content;
   color: white;
   text-decoration: none;
   border-bottom: 1px dotted hsla(0, 0%, 100%, 0.5);
