@@ -10,22 +10,28 @@ function Header() {
           <img src="./assets/diamond.svg" alt="diamond-imgs" />
           <span id="varticle-line"></span>
         </span>
-        <div className="content">
-          <h2>Dimension</h2>
-          <p>
-            A fully responsive site template designed by
-            <a href="#" className="hover-link">
-              HTML5 UP
-            </a>
-            and released
-            <br />
-            for free under the
-            <a href="#" className="hover-link">
-              Creative Commons
-            </a>
-            license.
-          </p>
-          <span id="verticle-line-bottom"></span>
+        <div id="header-content" className="content">
+          <motion.div
+            transition={{ delay: 0.5 }}
+            initial={{ padding: "0rem", y: 30, display: "none" }}
+            animate={{ padding: "3rem 2rem", y: 0, display: "flex" }}
+            className="inner"
+          >
+            <h2>Dimension</h2>
+            <p>
+              A fully responsive site template designed by
+              <a href="#" className="hover-link">
+                HTML5 UP
+              </a>
+              and released
+              <br />
+              for free under the
+              <a href="#" className="hover-link">
+                Creative Commons
+              </a>
+              license.
+            </p>
+          </motion.div>
         </div>
       </header>
     </>

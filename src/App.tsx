@@ -67,8 +67,13 @@ function App() {
   return (
     <React.Fragment>
       <div className="App">
-        <div id="visible-content">
-          <NavBar />
+        <NavBar />
+        <motion.div
+          transition={{ duration: 0.9 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          id="visible-content"
+        >
           <motion.div
             transition={{ duration: 0.3 }}
             animate={backgroundAnimation}
@@ -91,7 +96,7 @@ function App() {
               </a>
             </motion.footer>
           </div>
-        </div>
+        </motion.div>
         <div id="articles" style={{ display: "none" }}>
           <Article title="intro" animate={articleAnimation} onClose={reset}>
             <img src="./assets/pic01.jpg" alt="overlay" />
@@ -146,14 +151,53 @@ function App() {
               lorem ipsum dolor sit amet.
             </p>
           </Article>
+          <Article title="contact" animate={articleAnimation} onClose={reset}>
+            <form>
+              <div className="name-email">
+                <div className="input-sec">
+                  <label htmlFor="name">Name</label>
+                  <br />
+                  <input type="text" id="name" className="input" />
+                </div>
+                <div className="input-sec">
+                  <label htmlFor="email">Email</label>
+                  <br />
+                  <input type="email" id="email" className="input" />
+                </div>
+              </div>
+              <div className="input-sec">
+                <label htmlFor="message">Message</label>
+                <div className="message-input">
+                  <textarea
+                    className="input"
+                    name="message"
+                    id="message"
+                    cols={30}
+                    rows={10}
+                  ></textarea>
+                </div>
+              </div>
+              <div className="input-sec">
+                <button className="input-button focus">
+                  <b>send message</b>
+                </button>
+                <button className="input-button">
+                  <b>reset </b>
+                </button>
+              </div>
+            </form>
+          </Article>
         </div>
-        <div
+        <motion.div
           id="bg-img"
+          transition={{ duration: 1 }}
+          initial={{ filter: "brightness(0%)" }}
+          animate={{ filter: "brightness(50%)" }}
           style={{
             backgroundImage: `url("./assets/bg.jpg")`,
             filter: "brightness(50%)",
           }}
-        ></div>
+        ></motion.div>
       </div>
     </React.Fragment>
   );

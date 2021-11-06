@@ -41,11 +41,20 @@ div.content {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+  align-items: center;
+}
+
+div.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
   align-items: center;
   padding: 3rem 2rem;
 }
 
-div.content > p {
+div.inner > p {
   color: white;
   font-size: 1.2rem;
   font-weight: 100;
@@ -55,7 +64,7 @@ div.content > p {
   line-height: 2.5;
 }
 
-div.content > h2 {
+div.inner > h2 {
   color: white;
   font-size: 2.25rem;
   font-weight: 600px;
@@ -85,15 +94,6 @@ div.nav-buttons > button {
   color: white;
   border-right: 1px solid white;
   cursor: pointer;
-}
-
-span#verticle-line-bottom {
-  background-color: white;
-  height: calc(3.5rem + 1px);
-  width: 1px;
-  position: absolute;
-  left: 50%;
-  top: 100%;
 }
 
 div.nav-buttons > button:hover {
